@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+    <style>
+      .image-container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .image-container img {
+        width: 100px;
+        height: auto;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-container" id="imageContainer"></div>
+
+    <script>
+      // รายการรูปภาพ
+      const imageList = [];
+
+      // loop ชื่อรูปภาพเพิ่มเข้าไปใน imageList
+      for (let index = 1; index <= 11; index++) {
+        imageList.push(`${index}.jpg`);
+      }
+
+      // เรียกใช้ฟังก์ชันสร้าง HTML
+      createImageGallery(imageList);
+
+      function createImageGallery(images) {
+        const container = document.getElementById("imageContainer");
+
+        images.forEach((image) => {
+          const imgElement = document.createElement("img"); // สร้าง tag image
+          imgElement.src = `../assets/images/${image}`;
+          imgElement.alt = image.replace(".jpg", "../assets/images/"); // สร้าง alt จากชื่อไฟล์
+          container.appendChild(imgElement); // ให้ element tag img ถูกเพิ่มใน div id imageContainer
+        });
+      }
+    </script>
+  </body>
+</html>
